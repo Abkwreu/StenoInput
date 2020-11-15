@@ -134,24 +134,25 @@ enter.onclick = () => {
             hasSpace = true;
         }
         spaceAfter = true;
-        word.replace("{}", "");
+        word = word.replace("{}", "");
         if (word.includes("{-|}")) {
             hasSpace = false;
             capitalizeNext = true;
-            word.replace("{-|}", "");
+            word = word.replace("{-|}", "");
         }
         if (word.includes("{>}")) {
             hasSpace = false;
             capitalizeNext = false;
-            word.replace("{-|}", "");
+            word = word.replace("{>}", "");
         }
+        console.log(numbers.test(word));
         if (numbers.test(word) == true) {
             if (glue == true) {
                 hasSpace = false;
             }
             glue = true;
         } else if (word.charAt(0) == "{" && word.charAt(1) == "&" && word.charAt(word.length - 1) == "}") {
-            word = word.substring(2, yourString.length - 1);
+            word = word.substring(2, word.length - 1);
             if (glue == true) {
                 hasSpace = false;
             }
@@ -164,10 +165,11 @@ enter.onclick = () => {
             hasSpace = false;
         }
         if (word.includes("{^.^}")) {
-            word.replace("{^.^}", ".");
+            word = word.replace("{^.^}", ".");
             hasSpace = false;
             spaceAfter = false;
         }
+        word = word.replace(">}{&", "");
         if (capitalizeNext == true) {
             word = word.charAt(0).toUpperCase() + word.slice(1)
         }
