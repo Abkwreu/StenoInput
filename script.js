@@ -167,7 +167,14 @@ enter.onclick = () => {
         if (word.includes("{^.^}")) {
             word = word.replace("{^.^}", ".");
             hasSpace = false;
+        }
+        if (word.charAt(0) == "^") {
+            hasSpace = false;
+            word = word.substring(1, word.length);
+        }
+        if (word.charAt(word.length - 1) == "^") {
             spaceAfter = false;
+            word = word.substring(0, word.length - 1)
         }
         word = word.replace(">}{&", "");
         if (capitalizeNext == true) {
@@ -180,7 +187,6 @@ enter.onclick = () => {
         spaceAfter = true;
         switch (word) {
             case ".":
-            case ",":
             case "?":
             case "!":
             case ":":
