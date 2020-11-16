@@ -119,6 +119,9 @@ enter.onclick = () => {
     if (z.value == "Z") {
         currentWord += "Z";
     }
+    if (currentWord.charAt(currentWord.length - 1) == "-") {
+        currentWord = currentWord.slice(0,-1);
+    }
 
     ////////////////////////////////
 
